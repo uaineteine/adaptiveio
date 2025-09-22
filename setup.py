@@ -13,8 +13,6 @@ setup(
     long_description_content_type="text/markdown",
     url="",
     packages=find_packages(include=["adaptiveio", "adaptiveio.*"]),
-    package_data=None,
-    include_package_data=True,
     classifiers=[
         "Programming Language :: Python :: 3",
         "Operating System :: OS Independent",
