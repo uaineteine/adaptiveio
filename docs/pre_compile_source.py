@@ -4,7 +4,7 @@ from uainepydat import fileio
 from uainepydat import datatransform
 
 
-main_package_name = "transformslib"  # Your main package name
+main_package_name = "adaptiveio"  # Your main package name
 relative_directory = "../" + main_package_name  # Your source code root
 absolute_directory = os.path.abspath(relative_directory)
 
