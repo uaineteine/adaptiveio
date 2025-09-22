@@ -71,33 +71,19 @@
              
   <section id="metadata-transformations-framework">
 <h1>Metadata Transformations Framework<a class="headerlink" href="#metadata-transformations-framework" title="Link to this heading"></a></h1>
-<p>This program provides a data transformation framework for working with tables (DataFrames) in PySpark, Pandas, or Polars. It tracks all transformations and important events in a structured, auditable way using JSON logs.</p>
+<p>This package helps you read and write data in cloud and non-cloud environments in an agonistic way.</p>
 </section>
 <section id="description">
 <h1>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h1>
-<p>This framework makes your data pipeline transparent and auditable by logging every important action as a structured JSON event. You can trace exactly what happened to each table, when, and why. The framework provides three main approaches for managing tables:</p>
-<ol class="arabic simple">
-<li><p><strong>Direct table loading</strong> with <cite>MetaFrame</cite> for single table operations</p></li>
-<li><p><strong>Payload-based loading</strong> with <cite>SupplyLoad</cite> for configuration-driven multi-table loading</p></li>
-<li><p><strong>Collection management</strong> with <cite>Tablecollection</cite> for flexible multi-table operations</p></li>
-</ol>
-<p>Each approach provides the same event tracking and audit capabilities while offering different levels of control and automation for your specific use case.</p>
+<p>The adaptiveio package provides tools for flexible and auditable data table management. It includes modules for:</p>
+<ul class="simple">
+<li><p>Reading and writing tables in various formats (<cite>jsonio.py</cite>, <cite>textio.py</cite>)</p></li>
+<li><p>Managing table metadata and audit trails (<cite>meta.py</cite>)</p></li>
+<li><p>Centralized initialization and interface (<cite>__init__.py</cite>)</p></li>
+</ul>
+<p>The package is designed to support transparent data operations, structured event logging, and easy integration into data pipelines. It enables users to load, process, and track text and JSON in different environments.</p>
 <div class="toctree-wrapper compound">
 </div>
-</section>
-<section id="dependencies">
-<h1>Dependencies<a class="headerlink" href="#dependencies" title="Link to this heading"></a></h1>
-<ul class="simple">
-<li><p>polars</p></li>
-<li><p>pandas</p></li>
-<li><p>pyspark</p></li>
-<li><p>sas-to-polars</p></li>
-<li><p>sparkpolars</p></li>
-<li><p>uainepydat</p></li>
-<li><p>pyvis</p></li>
-<li><p>networkx</p></li>
-<li><p>naming-standards&gt;=1.0.0</p></li>
-</ul>
 </section>
 <section id="contents">
 <h1>Contents<a class="headerlink" href="#contents" title="Link to this heading"></a></h1>

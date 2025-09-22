@@ -66,14 +66,6 @@ pre_str = fileio.read_file_to_string(pre_compile_path)
 toctree_lines = [".. toctree::", "   :maxdepth: 2", "", *[f"   {os.path.splitext(f)[0]}" for f in subfolder_rst_files], ""]
 post_str = datatransform.replace_between_tags(pre_str, "automodule", toctree_lines, deleteTags=True)
 
-# --- Dependencies ---
-requirements_path = "../requirements.txt"
-requirements = fileio.read_file_to_string(requirements_path)
-requirements = datatransform.break_into_lines(requirements)
-requirements = list(map(lambda string: datatransform.add_prefix(string, "* "), requirements))
-requirements.append("\n")
-post_str = datatransform.replace_between_tags(post_str, "dependencies", requirements, deleteTags=True)
-
 # --- Purpose ---
 purpose_path = "../meta/purpose.txt"
 pur = fileio.read_file_to_string(purpose_path)

@@ -6,39 +6,22 @@
 Metadata Transformations Framework
 =========================
 
-This program provides a data transformation framework for working with tables (DataFrames) in PySpark, Pandas, or Polars. It tracks all transformations and important events in a structured, auditable way using JSON logs.
+This package helps you read and write data in cloud and non-cloud environments in an agonistic way.
 
 Description
 =========================
 
-This framework makes your data pipeline transparent and auditable by logging every important action as a structured JSON event. You can trace exactly what happened to each table, when, and why. The framework provides three main approaches for managing tables:
+The adaptiveio package provides tools for flexible and auditable data table management. It includes modules for:
 
-1. **Direct table loading** with `MetaFrame` for single table operations
+- Reading and writing tables in various formats (`jsonio.py`, `textio.py`)
+- Managing table metadata and audit trails (`meta.py`)
+- Centralized initialization and interface (`__init__.py`)
 
-2. **Payload-based loading** with `SupplyLoad` for configuration-driven multi-table loading
-
-3. **Collection management** with `Tablecollection` for flexible multi-table operations
-
-Each approach provides the same event tracking and audit capabilities while offering different levels of control and automation for your specific use case.
+The package is designed to support transparent data operations, structured event logging, and easy integration into data pipelines. It enables users to load, process, and track text and JSON in different environments.
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-
-Dependencies
-=========================
-
-* polars
-* pandas
-* pyspark
-* sas-to-polars
-* sparkpolars
-* uainepydat
-* pyvis
-* networkx
-* naming-standards>=1.0.0
-
-
 
 Contents
 =========================
