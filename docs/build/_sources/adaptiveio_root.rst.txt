@@ -1,0 +1,21 @@
+adaptiveio (root)
+=================
+
+adaptiveio.jsonio
+-----------------
+
+.. automodule:: adaptiveio.jsonio
+   :members:
+
+adaptiveio.meta
+---------------
+
+.. automodule:: adaptiveio.meta
+   :members:
+
+adaptiveio.textio
+-----------------
+
+.. automodule:: adaptiveio.textio
+   :members:
+
