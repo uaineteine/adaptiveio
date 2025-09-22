@@ -6,8 +6,8 @@ import os
 #pre compile setup.py
 # generate_setup.py
 
-package_name = "transformslib"
-version = "0.15.0"
+package_name = "adaptiveio"
+version = "1.0.0"
 author = ""
 author_email = ""
 url = ""
@@ -42,9 +42,7 @@ setup(
     long_description_content_type="text/markdown",
     url="{url}",
     packages=find_packages(include=["{package_name}", "{package_name}.*"]),
-    package_data={{
-        "{package_name}.templates": ["*.html", "*.txt", "*.json", "*.css", "*.js"],
-    }},
+    package_data=None,
     include_package_data=True,
     classifiers=[
         "Programming Language :: Python :: 3",
@@ -62,7 +60,7 @@ with open("setup.py", "w", encoding="utf-8") as f:
 print("setup.py has been generated with pre-rendered requirements and README!")
 
 # Remove build and dist directories
-for folder in ["build", "dist", "transformslib.egg-info"]:
+for folder in ["build", "dist", "adaptiveio.egg-info"]:
     if os.path.exists(folder):
         shutil.rmtree(folder)
         print(f"Removed {folder} folder.")
