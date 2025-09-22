@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Metadata Transformations Framework
+Adaptive IO
 =========================
 
 This package helps you read and write data in cloud and non-cloud environments in an agonistic way.
@@ -28,9 +28,16 @@ Contents
 
 .. toctree::
    :maxdepth: 2
+   :caption: Package Functions:
 
-   adaptiveio_root
+.. automodule:: adaptiveio.textio
+   :members:
 
+.. automodule:: adaptiveio.jsonio
+   :members:
+
+.. automodule:: adaptiveio.meta
+   :members:
 
 Release History
 =========================

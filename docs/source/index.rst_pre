@@ -22,8 +22,14 @@ Description
 Contents
 =========================
 
-<automodule>
-</automodule>
+.. automodule:: adaptiveio.textio
+   :members:
+
+.. automodule:: adaptiveio.jsonio
+   :members:
+
+.. automodule:: adaptiveio.meta
+   :members:
 
 Release History
 =========================

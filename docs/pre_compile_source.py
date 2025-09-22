@@ -39,38 +39,15 @@ for f in python_files:
     mod = filepath_to_module(f, absolute_directory)
     subfolder_modules[subfolder].append(mod)
 
-# --- Write one .rst file per subfolder ---
-rst_dir = os.path.join("source")
-os.makedirs(rst_dir, exist_ok=True)
-subfolder_rst_files = []
-for subfolder, mods in sorted(subfolder_modules.items()):
-    if subfolder == "(root)":
-        rst_filename = f"{main_package_name}_root.rst"
-        section_title = f"{main_package_name} (root)"
-    else:
-        rst_filename = f"{subfolder}.rst"
-        section_title = subfolder
-    rst_path = os.path.join(rst_dir, rst_filename)
-    subfolder_rst_files.append(rst_filename)
-    with open(rst_path, "w", encoding="utf-8") as f:
-        f.write(section_title + "\n" + "=" * len(section_title) + "\n\n")
-        for mod in sorted(mods):
-            f.write(mod + "\n" + "-" * len(mod) + "\n\n")
-            f.write(f".. automodule:: {mod}\n   :members:\n\n")
-
 # --- Update pre-compile index.rst_pre ---
 pre_compile_path = "source/index.rst_pre"
 pre_str = fileio.read_file_to_string(pre_compile_path)
-
-# --- Insert a toctree for subfolder rst files ---
-toctree_lines = [".. toctree::", "   :maxdepth: 2", "", *[f"   {os.path.splitext(f)[0]}" for f in subfolder_rst_files], ""]
-post_str = datatransform.replace_between_tags(pre_str, "automodule", toctree_lines, deleteTags=True)
 
 # --- Purpose ---
 purpose_path = "../meta/purpose.txt"
 pur = fileio.read_file_to_string(purpose_path)
 pur = datatransform.break_into_lines(pur)
-post_str = datatransform.replace_between_tags(post_str, "purpose", pur, deleteTags=True)
+post_str = datatransform.replace_between_tags(pre_str, "purpose", pur, deleteTags=True)
 
 # --- Changelog ---
 changelog_path = "../meta/changelog.txt"
