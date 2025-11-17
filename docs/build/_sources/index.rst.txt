@@ -26,10 +26,6 @@ The package is designed to support transparent data operations, structured event
 Contents
 =========================
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Package Functions:
-
 .. automodule:: adaptiveio.textio
    :members:
 
