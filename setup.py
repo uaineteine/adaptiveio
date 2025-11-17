@@ -5,7 +5,7 @@ long_description = '# adaptiveio\n\n![Python Version](https://img.shields.io/bad
 
 setup(
     name="adaptiveio",
-    version="1.0.0",
+    version="1.0.1",
     author="",
     author_email="",
     description="A python package of a working transforms framework",
