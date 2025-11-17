@@ -44,7 +44,7 @@
               <div class="local-toc"><ul>
 <li><a class="reference internal" href="#">Adaptive IO</a></li>
 <li><a class="reference internal" href="#description">Description</a></li>
-<li><a class="reference internal" href="#contents">Contents</a><ul>
+<li><a class="reference internal" href="#module-adaptiveio.textio">Contents</a><ul>
 <li><a class="reference internal" href="#adaptiveio.textio.read_raw_text"><code class="docutils literal notranslate"><span class="pre">read_raw_text()</span></code></a></li>
 <li><a class="reference internal" href="#adaptiveio.textio.save_raw_text"><code class="docutils literal notranslate"><span class="pre">save_raw_text()</span></code></a></li>
 <li><a class="reference internal" href="#adaptiveio.jsonio.append_json_newline"><code class="docutils literal notranslate"><span class="pre">append_json_newline()</span></code></a></li>
@@ -101,14 +101,12 @@
 <div class="toctree-wrapper compound">
 </div>
 </section>
-<section id="contents">
-<h1>Contents<a class="headerlink" href="#contents" title="Link to this heading"></a></h1>
-<div class="toctree-wrapper compound">
-</div>
-<p id="module-adaptiveio.textio">textio.py</p>
+<section id="module-adaptiveio.textio">
+<span id="contents"></span><h1>Contents<a class="headerlink" href="#module-adaptiveio.textio" title="Link to this heading"></a></h1>
+<p>textio.py</p>
 <p>Utility functions for reading and writing raw text files.
-Supports both local file paths and abfss:// paths for Azure Data Lake Storage.
-Uses Spark for distributed file operations when working with abfss:// paths.</p>
+Supports both local file paths and abfss: paths for Azure Data Lake Storage.
+Uses Spark for distributed file operations when working with abfss: paths.</p>
 <dl class="simple">
 <dt>Functions:</dt><dd><dl class="simple">
 <dt>read_raw_text(path: str, spark=None) -&gt; str</dt><dd><p>Read a text file and return its content as a single string.</p>
@@ -125,8 +123,8 @@ Created: September 2025</p>
 <span class="sig-prename descclassname"><span class="pre">adaptiveio.textio.</span></span><span class="sig-name descname"><span class="pre">read_raw_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spark</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#adaptiveio.textio.read_raw_text" title="Link to this definition"></a></dt>
 <dd><p>Read a text file and return its content as a single string.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>path (str): Path to the text file. Supports local paths and abfss:// paths.
-spark (SparkSession, optional): Spark session for reading from abfss:// paths. Defaults to None.</p>
+<dt>Args:</dt><dd><p>path (str): Path to the text file. Supports local paths and abfss: paths.
+spark (SparkSession, optional): Spark session for reading from abfss: paths. Defaults to None.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -136,9 +134,9 @@ spark (SparkSession, optional): Spark session for reading from abfss:// paths. D
 <span class="sig-prename descclassname"><span class="pre">adaptiveio.textio.</span></span><span class="sig-name descname"><span class="pre">save_raw_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spark</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#adaptiveio.textio.save_raw_text" title="Link to this definition"></a></dt>
 <dd><p>Save a string to a text file.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>path (str): Path to the text file. Supports local paths and abfss:// paths.
+<dt>Args:</dt><dd><p>path (str): Path to the text file. Supports local paths and abfss: paths.
 text (str): The text content to save.
-spark (SparkSession, optional): Spark session for writing to abfss:// paths. Defaults to None.</p>
+spark (SparkSession, optional): Spark session for writing to abfss: paths. Defaults to None.</p>
 </dd>
 </dl>
 </dd></dl>
