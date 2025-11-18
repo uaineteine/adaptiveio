@@ -40,12 +40,12 @@ def load_json_newline(src_path: str, spark=None) -> list:
 def append_json_newline(obj: dict, dst_path: str, spark=None):
     """
     Append a dict to a newline-delimited JSON file.
-    For abfss://, reads the file, appends in memory, and overwrites.
+    For abfss:, reads the file, appends in memory, and overwrites.
     For local files, uses append mode.
     """
     if not isinstance(obj, dict):
         raise TypeError(f"append_json_newline expects a dict, got {type(obj)}")
-    if dst_path.startswith("abfss://"):
+    if dst_path.startswith("abfss:") or dst_path.startswith("dbfs:"):
         # Read existing objects
         objs = load_json_newline(dst_path, spark=spark)
         objs.append(obj)
