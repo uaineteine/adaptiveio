@@ -2,6 +2,12 @@ def is_blob_path(input_path:str) -> bool:
     """Returns True if an abfss path"""
     if input_path.startswith("abfss:"):
         return True
+    if input_path.startswith("abfs:"):
+        return True
+    if input_path.startswith("wasb:"):
+        return True
+    if input_path.startswith("wasbs:"):
+        return True
     
     #else
     return False
@@ -32,7 +38,7 @@ def normalisePaths(input_path:str) -> str:
     _isvalidpath(input_path)
     
     #treatments
-    input_path = remove_trailing_slashes()
+    input_path = remove_trailing_slashes(input_path)
     
     #cloud type conversions
     if input_path.startswith("az:/"):
