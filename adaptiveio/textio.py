@@ -16,6 +16,8 @@ Author: Daniel
 Created: September 2025
 """
 
+from .pathing import is_blob_path, normalisePaths
+
 def read_raw_text(path:str, spark=None) -> str:
     """Read a text file and return its content as a single string.
 
@@ -23,8 +25,10 @@ def read_raw_text(path:str, spark=None) -> str:
         path (str): Path to the text file. Supports local paths and abfss: paths.
         spark (SparkSession, optional): Spark session for reading from abfss: paths. Defaults to None.
     """
-
-    if path.startswith("abfss:") or path.startswith("dbfs:"):
+    #fix any pathing syntax
+    path = normalisePaths(path)
+    
+    if is_blob_path(path):
         if spark is None:
             raise ValueError("Spark session must be provided for reading from abfss: paths.")
         df = spark.read.text(path)
@@ -43,8 +47,10 @@ def save_raw_text(path:str, text:str, spark=None):
         text (str): The text content to save.
         spark (SparkSession, optional): Spark session for writing to abfss: paths. Defaults to None.
     """
-
-    if path.startswith("abfss:") or path.startswith("dbfs:"):
+    #fix any pathing syntax
+    path = normalisePaths(path)
+    
+    if is_blob_path(path):
         if spark is None:
             raise ValueError("Spark session must be provided for writing to abfss: paths.")
         rdd = spark.sparkContext.parallelize([text]) if isinstance(text, str) else spark.sparkContext.parallelize(text)

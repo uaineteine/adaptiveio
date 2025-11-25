@@ -18,6 +18,7 @@ Created: September 2025
 
 import json 
 from .textio import read_raw_text, save_raw_text
+from .pathing import is_blob_path, normalisePaths
 
 def load_json(src_path: str, spark=None) -> dict:
     """Load a json file using an agonist backend between os and spark."""
@@ -45,7 +46,11 @@ def append_json_newline(obj: dict, dst_path: str, spark=None):
     """
     if not isinstance(obj, dict):
         raise TypeError(f"append_json_newline expects a dict, got {type(obj)}")
-    if dst_path.startswith("abfss:") or dst_path.startswith("dbfs:"):
+    
+    #fix any pathing syntax
+    dst_path = normalisePaths(dst_path)
+    
+    if is_blob_path(dst_path):
         # Read existing objects
         objs = load_json_newline(dst_path, spark=spark)
         objs.append(obj)
