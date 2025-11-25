@@ -33,8 +33,11 @@ def load_json_newline(src_path: str, spark=None) -> list:
     events = []
     for obj_str in file_str.split("\n"):
         if obj_str.strip():
-            obj_str = obj_str if obj_str.startswith("{") else "{" + obj_str
-            events.append(json.loads(obj_str))
+            try:
+                obj_str = obj_str if obj_str.startswith("{") else "{" + obj_str
+                events.append(json.loads(obj_str))
+            except:
+                print(f"PE100 json line could not be loaded from {src_path}")
     
     return events
 
