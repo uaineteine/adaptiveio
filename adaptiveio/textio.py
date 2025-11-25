@@ -30,7 +30,7 @@ def read_raw_text(path:str, spark=None) -> str:
     
     if is_blob_path(path):
         if spark is None:
-            raise ValueError("Spark session must be provided for reading from abfss: paths.")
+            raise ValueError("PE010 Spark session must be provided for reading from abfss: paths.")
         df = spark.read.text(path)
         lines = df.rdd.map(lambda row: row[0]).collect()
         txt = "\n".join(lines)
@@ -52,7 +52,7 @@ def save_raw_text(path:str, text:str, spark=None):
     
     if is_blob_path(path):
         if spark is None:
-            raise ValueError("Spark session must be provided for writing to abfss: paths.")
+            raise ValueError("PE011 Spark session must be provided for writing to abfss: paths.")
         rdd = spark.sparkContext.parallelize([text]) if isinstance(text, str) else spark.sparkContext.parallelize(text)
         df = rdd.toDF(["value"])
         df.write.mode("overwrite").text(path)
