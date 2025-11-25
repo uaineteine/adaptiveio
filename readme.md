@@ -6,6 +6,7 @@
 
 The adaptiveio package provides tools for flexible and auditable data table management. It includes modules for:
 
+- Handling pathing (`pathing.py`)
 - Reading and writing tables in various formats (`jsonio.py`, `textio.py`)
 - Centralized initialization and interface (`__init__.py`)
 
@@ -31,6 +32,7 @@ This package helps you read and write data in cloud and non-cloud environments i
 
 ## Modules
 
+- `adaptiveio/pathing.py`: Identify and normalise pathing types
 - `adaptiveio/jsonio.py`: Read and write JSON tables
 - `adaptiveio/textio.py`: Read and write text tables
 - `adaptiveio/__init__.py`: Centralized interface
