@@ -7,7 +7,6 @@
 The adaptiveio package provides tools for flexible and auditable data table management. It includes modules for:
 
 - Reading and writing tables in various formats (`jsonio.py`, `textio.py`)
-- Managing table metadata and audit trails (`meta.py`)
 - Centralized initialization and interface (`__init__.py`)
 
 The package is designed to support transparent data operations, structured event logging, and easy integration into data pipelines. It enables users to load, process, and track text and JSON in different environments.
@@ -34,7 +33,6 @@ This package helps you read and write data in cloud and non-cloud environments i
 
 - `adaptiveio/jsonio.py`: Read and write JSON tables
 - `adaptiveio/textio.py`: Read and write text tables
-- `adaptiveio/meta.py`: Manage metadata and audit logs
 - `adaptiveio/__init__.py`: Centralized interface
 
 ## Documentation
