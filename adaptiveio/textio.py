@@ -34,8 +34,10 @@ def read_raw_text(path:str, spark=None) -> str:
         if spark is None:
             raise ValueError("PE010 Spark session must be provided for reading from abfss: paths.")
         df = spark.read.text(path)
-        lines = df.rdd.map(lambda row: row[0]).collect()
-        txt = "\n".join(lines)
+        # Convert Spark DataFrame to Pandas
+        pd_df = df.toPandas()
+        # Use pandas string join
+        txt = "\n".join(pd_df["value"].tolist())
         return txt
     else:
         with open(path, "r", encoding="utf-8") as f:
