@@ -64,8 +64,8 @@ def save_raw_text(path:str, text:str, spark:SparkSession=None):
         # convert to Spark DataFrame
         df = spark.createDataFrame(pd_df)
 
-        # write as text file
-        df.write.mode("overwrite").text(path)
+        # write as text file - coalese to 1 part
+        df.coalesce(1).write.mode("overwrite").text(path)
     else:
         with open(path, "w", encoding="utf-8") as f:
             f.write(text)
