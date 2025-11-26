@@ -51,8 +51,6 @@
 <li><a class="reference internal" href="#adaptiveio.jsonio.load_json"><code class="docutils literal notranslate"><span class="pre">load_json()</span></code></a></li>
 <li><a class="reference internal" href="#adaptiveio.jsonio.load_json_newline"><code class="docutils literal notranslate"><span class="pre">load_json_newline()</span></code></a></li>
 <li><a class="reference internal" href="#adaptiveio.jsonio.write_json"><code class="docutils literal notranslate"><span class="pre">write_json()</span></code></a></li>
-<li><a class="reference internal" href="#adaptiveio.meta.expected_meta_version"><code class="docutils literal notranslate"><span class="pre">expected_meta_version()</span></code></a></li>
-<li><a class="reference internal" href="#adaptiveio.meta.meta_version"><code class="docutils literal notranslate"><span class="pre">meta_version</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#release-history">Release History</a><ul>
@@ -131,12 +129,12 @@ spark (SparkSession, optional): Spark session for reading from abfss: paths. Def
 
 <dl class="py function">
 <dt class="sig sig-object py" id="adaptiveio.textio.save_raw_text">
-<span class="sig-prename descclassname"><span class="pre">adaptiveio.textio.</span></span><span class="sig-name descname"><span class="pre">save_raw_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spark</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#adaptiveio.textio.save_raw_text" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">adaptiveio.textio.</span></span><span class="sig-name descname"><span class="pre">save_raw_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spark</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SparkSession</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#adaptiveio.textio.save_raw_text" title="Link to this definition"></a></dt>
 <dd><p>Save a string to a text file.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>path (str): Path to the text file. Supports local paths and abfss: paths.
+<dt>Args:</dt><dd><p>path (str): Path to the text file. Supports local paths and blob paths.
 text (str): The text content to save.
-spark (SparkSession, optional): Spark session for writing to abfss: paths. Defaults to None.</p>
+spark (SparkSession, optional): Spark session for writing to blob paths. Defaults to None.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -180,24 +178,6 @@ For local files, uses append mode.</p>
 <dt class="sig sig-object py" id="adaptiveio.jsonio.write_json">
 <span class="sig-prename descclassname"><span class="pre">adaptiveio.jsonio.</span></span><span class="sig-name descname"><span class="pre">write_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spark</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#adaptiveio.jsonio.write_json" title="Link to this definition"></a></dt>
 <dd><p>Write a dict to a JSON file using an agonist backend between os and spark.</p>
-</dd></dl>
-
-<p id="module-adaptiveio.meta">This module defines constant parameters used across the application.</p>
-<dl class="simple">
-<dt>Version:</dt><dd><p>1.0</p>
-</dd>
-</dl>
-<dl class="py function">
-<dt class="sig sig-object py" id="adaptiveio.meta.expected_meta_version">
-<span class="sig-prename descclassname"><span class="pre">adaptiveio.meta.</span></span><span class="sig-name descname"><span class="pre">expected_meta_version</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">this_version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#adaptiveio.meta.expected_meta_version" title="Link to this definition"></a></dt>
-<dd><p>Returns a bool if the input version matches the meta version of the library framework it was run on. Will print user warnings if the value mismatches</p>
-</dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="adaptiveio.meta.meta_version">
-<span class="sig-prename descclassname"><span class="pre">adaptiveio.meta.</span></span><span class="sig-name descname"><span class="pre">meta_version</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'1.0'</span></em><a class="headerlink" href="#adaptiveio.meta.meta_version" title="Link to this definition"></a></dt>
-<dd><p>str: The version number of this module.
-Used to track compatibility and changes across releases.</p>
 </dd></dl>
 
 </section>
