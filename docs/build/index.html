@@ -44,7 +44,10 @@
               <div class="local-toc"><ul>
 <li><a class="reference internal" href="#">Adaptive IO</a></li>
 <li><a class="reference internal" href="#description">Description</a></li>
-<li><a class="reference internal" href="#module-adaptiveio.textio">Contents</a><ul>
+<li><a class="reference internal" href="#module-adaptiveio.pathing">Contents</a><ul>
+<li><a class="reference internal" href="#adaptiveio.pathing.is_blob_path"><code class="docutils literal notranslate"><span class="pre">is_blob_path()</span></code></a></li>
+<li><a class="reference internal" href="#adaptiveio.pathing.normalisePaths"><code class="docutils literal notranslate"><span class="pre">normalisePaths()</span></code></a></li>
+<li><a class="reference internal" href="#adaptiveio.pathing.remove_trailing_slashes"><code class="docutils literal notranslate"><span class="pre">remove_trailing_slashes()</span></code></a></li>
 <li><a class="reference internal" href="#adaptiveio.textio.read_raw_text"><code class="docutils literal notranslate"><span class="pre">read_raw_text()</span></code></a></li>
 <li><a class="reference internal" href="#adaptiveio.textio.save_raw_text"><code class="docutils literal notranslate"><span class="pre">save_raw_text()</span></code></a></li>
 <li><a class="reference internal" href="#adaptiveio.jsonio.append_json_newline"><code class="docutils literal notranslate"><span class="pre">append_json_newline()</span></code></a></li>
@@ -99,9 +102,39 @@
 <div class="toctree-wrapper compound">
 </div>
 </section>
-<section id="module-adaptiveio.textio">
-<span id="contents"></span><h1>Contents<a class="headerlink" href="#module-adaptiveio.textio" title="Link to this heading"></a></h1>
-<p>textio.py</p>
+<section id="module-adaptiveio.pathing">
+<span id="contents"></span><h1>Contents<a class="headerlink" href="#module-adaptiveio.pathing" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="adaptiveio.pathing.is_blob_path">
+<span class="sig-prename descclassname"><span class="pre">adaptiveio.pathing.</span></span><span class="sig-name descname"><span class="pre">is_blob_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#adaptiveio.pathing.is_blob_path" title="Link to this definition"></a></dt>
+<dd><p>Returns True if an abfss path</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="adaptiveio.pathing.normalisePaths">
+<span class="sig-prename descclassname"><span class="pre">adaptiveio.pathing.</span></span><span class="sig-name descname"><span class="pre">normalisePaths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#adaptiveio.pathing.normalisePaths" title="Link to this definition"></a></dt>
+<dd><p>Apply a standardisation of naming conventions for filepaths</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>input_path (str)</p>
+</dd>
+<dt>Returns:</dt><dd><p>str: The normalised path</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="adaptiveio.pathing.remove_trailing_slashes">
+<span class="sig-prename descclassname"><span class="pre">adaptiveio.pathing.</span></span><span class="sig-name descname"><span class="pre">remove_trailing_slashes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#adaptiveio.pathing.remove_trailing_slashes" title="Link to this definition"></a></dt>
+<dd><p>Remove trailing slashes in path</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>input_path (str)</p>
+</dd>
+<dt>Returns:</dt><dd><p>str: The treated path</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p id="module-adaptiveio.textio">textio.py</p>
 <p>Utility functions for reading and writing raw text files.
 Supports both local file paths and abfss: paths for Azure Data Lake Storage.
 Uses Spark for distributed file operations when working with abfss: paths.</p>
@@ -129,7 +162,7 @@ spark (SparkSession, optional): Spark session for reading from abfss: paths. Def
 
 <dl class="py function">
 <dt class="sig sig-object py" id="adaptiveio.textio.save_raw_text">
-<span class="sig-prename descclassname"><span class="pre">adaptiveio.textio.</span></span><span class="sig-name descname"><span class="pre">save_raw_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spark</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SparkSession</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#adaptiveio.textio.save_raw_text" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">adaptiveio.textio.</span></span><span class="sig-name descname"><span class="pre">save_raw_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spark</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SparkSession</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#adaptiveio.textio.save_raw_text" title="Link to this definition"></a></dt>
 <dd><p>Save a string to a text file.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><p>path (str): Path to the text file. Supports local paths and blob paths.

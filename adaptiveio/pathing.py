@@ -14,7 +14,7 @@ def is_blob_path(input_path:str) -> bool:
 
 def _isvalidpath(input_path:str) -> bool:
     """Returns if path is acceptable or not"""
-    if type(input_path) != "str":
+    if not isinstance(input_path, str):
         print("PE0002 Warning: input_path must be a string")
         return False
     if input_path == "":
@@ -23,6 +23,34 @@ def _isvalidpath(input_path:str) -> bool:
 
     #else
     return True
+
+def _fix_protocols(input_path:str) -> str:
+    """
+    Fixing protocols in os paths
+
+    Args:
+        input_path (str)
+
+    Returns:
+        str: The normalised path
+    """
+    new_path = input_path
+
+    if input_path.startswith("abfss://") and input_path.startswith("abfss:/"):
+        new_path = input_path.replace("abfss:/", "abfss://")
+    elif input_path.startswith("abfs://") and input_path.startswith("abfs:/"):
+        new_path = input_path.replace("abfs:/", "abfs://")
+    elif input_path.startswith("dbfs://") and input_path.startswith("dbfs:/"):
+        new_path = input_path.replace("dbfs:/", "dbfs://")
+    elif input_path.startswith("https://") and input_path.startswith("https:/"):
+        new_path = input_path.replace("https:/", "https://")
+    elif input_path.startswith("http://") and input_path.startswith("http:/"):
+        new_path = input_path.replace("http:/", "http://")
+    
+    if new_path != input_path:
+        print("PE0010 Warning: protocol in path has been fixed from {input_path} to {new_path}")
+
+    return new_path
 
 def normalisePaths(input_path:str) -> str:
     """
@@ -43,7 +71,9 @@ def normalisePaths(input_path:str) -> str:
     #cloud type conversions
     if input_path.startswith("az:/"):
         input_path = input_path.replace("az:", "abfss:")
-        
+    
+    input_path = _fix_protocols(input_path)
+
     return input_path
 
 def remove_trailing_slashes(input_path:str) -> str:
