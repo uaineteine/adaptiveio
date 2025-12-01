@@ -14,7 +14,7 @@ def is_blob_path(input_path:str) -> bool:
 
 def _isvalidpath(input_path:str) -> bool:
     """Returns if path is acceptable or not"""
-    if type(input_path) != "str":
+    if not isinstance(input_path, str):
         print("PE0002 Warning: input_path must be a string")
         return False
     if input_path == "":
