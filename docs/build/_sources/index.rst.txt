@@ -26,13 +26,13 @@ The package is designed to support transparent data operations, structured event
 Contents
 =========================
 
+.. automodule:: adaptiveio.pathing
+   :members:
+
 .. automodule:: adaptiveio.textio
    :members:
 
 .. automodule:: adaptiveio.jsonio
-   :members:
-
-.. automodule:: adaptiveio.meta
    :members:
 
 Release History

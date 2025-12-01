@@ -22,13 +22,13 @@ Description
 Contents
 =========================
 
+.. automodule:: adaptiveio.pathing
+   :members:
+
 .. automodule:: adaptiveio.textio
    :members:
 
 .. automodule:: adaptiveio.jsonio
-   :members:
-
-.. automodule:: adaptiveio.meta
    :members:
 
 Release History
