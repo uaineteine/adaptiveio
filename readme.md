@@ -1,6 +1,6 @@
 # adaptiveio
 
-![Python Version](https://img.shields.io/badge/python-3.10+-blue) ![Version 2.0.3](https://img.shields.io/badge/version-2.0.3-brightgreen)
+![Python Version](https://img.shields.io/badge/python-3.10+-blue) ![Version 2.0.4](https://img.shields.io/badge/version-2.0.4-brightgreen)
 
 ## Description
 
