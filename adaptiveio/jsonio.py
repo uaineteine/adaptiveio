@@ -54,10 +54,10 @@ def append_json_newline(obj: dict, dst_path: str, spark=None):
     dst_path = normalisePaths(dst_path)
     
     if is_blob_path(dst_path):
-         # Try reading existing objects, fall back to empty list
+        # Try reading existing objects, fall back to empty list
         try:
             objs = load_json_newline(dst_path, spark=spark)
-        except (FileNotFoundError, IOError):
+        except:
             objs = []
         
         objs.append(obj)
