@@ -24,6 +24,29 @@ def _isvalidpath(input_path:str) -> bool:
     #else
     return True
 
+def _fix_protocols(input_path:str) -> str:
+    """
+    Fixing protocols in os paths
+
+    Args:
+        input_path (str)
+
+    Returns:
+        str: The normalised path
+    """
+    if input_path.startswith("abfss://") and input_path.startswith("abfss:/"):
+        input_path = input_path.replace("abfss:/", "abfss://")
+    elif input_path.startswith("abfs://") and input_path.startswith("abfs:/"):
+        input_path = input_path.replace("abfs:/", "abfs://")
+    elif input_path.startswith("dbfs://") and input_path.startswith("dbfs:/"):
+        input_path = input_path.replace("dbfs:/", "dbfs://")
+    elif input_path.startswith("https://") and input_path.startswith("https:/"):
+        input_path = input_path.replace("https:/", "https://")
+    elif input_path.startswith("http://") and input_path.startswith("http:/"):
+        input_path = input_path.replace("http:/", "http://")
+    
+    return input_path
+
 def normalisePaths(input_path:str) -> str:
     """
     Apply a standardisation of naming conventions for filepaths
@@ -43,7 +66,9 @@ def normalisePaths(input_path:str) -> str:
     #cloud type conversions
     if input_path.startswith("az:/"):
         input_path = input_path.replace("az:", "abfss:")
-        
+    
+    input_path = _fix_protocols(input_path)
+
     return input_path
 
 def remove_trailing_slashes(input_path:str) -> str:
