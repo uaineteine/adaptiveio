@@ -34,18 +34,23 @@ def _fix_protocols(input_path:str) -> str:
     Returns:
         str: The normalised path
     """
+    new_path = input_path
+
     if input_path.startswith("abfss://") and input_path.startswith("abfss:/"):
-        input_path = input_path.replace("abfss:/", "abfss://")
+        new_path = input_path.replace("abfss:/", "abfss://")
     elif input_path.startswith("abfs://") and input_path.startswith("abfs:/"):
-        input_path = input_path.replace("abfs:/", "abfs://")
+        new_path = input_path.replace("abfs:/", "abfs://")
     elif input_path.startswith("dbfs://") and input_path.startswith("dbfs:/"):
-        input_path = input_path.replace("dbfs:/", "dbfs://")
+        new_path = input_path.replace("dbfs:/", "dbfs://")
     elif input_path.startswith("https://") and input_path.startswith("https:/"):
-        input_path = input_path.replace("https:/", "https://")
+        new_path = input_path.replace("https:/", "https://")
     elif input_path.startswith("http://") and input_path.startswith("http:/"):
-        input_path = input_path.replace("http:/", "http://")
+        new_path = input_path.replace("http:/", "http://")
     
-    return input_path
+    if new_path != input_path:
+        print("PE0010 Warning: protocol in path has been fixed from {input_path} to {new_path}")
+
+    return new_path
 
 def normalisePaths(input_path:str) -> str:
     """
