@@ -36,15 +36,15 @@ def _fix_protocols(input_path:str) -> str:
     """
     new_path = input_path
 
-    if input_path.startswith("abfss://") and input_path.startswith("abfss:/"):
+    if not input_path.startswith("abfss://") and input_path.startswith("abfss:/"):
         new_path = input_path.replace("abfss:/", "abfss://")
-    elif input_path.startswith("abfs://") and input_path.startswith("abfs:/"):
+    elif not input_path.startswith("abfs://") and input_path.startswith("abfs:/"):
         new_path = input_path.replace("abfs:/", "abfs://")
-    elif input_path.startswith("dbfs://") and input_path.startswith("dbfs:/"):
+    elif not input_path.startswith("dbfs://") and input_path.startswith("dbfs:/"):
         new_path = input_path.replace("dbfs:/", "dbfs://")
-    elif input_path.startswith("https://") and input_path.startswith("https:/"):
+    elif not input_path.startswith("https://") and input_path.startswith("https:/"):
         new_path = input_path.replace("https:/", "https://")
-    elif input_path.startswith("http://") and input_path.startswith("http:/"):
+    elif not input_path.startswith("http://") and input_path.startswith("http:/"):
         new_path = input_path.replace("http:/", "http://")
     
     if new_path != input_path:

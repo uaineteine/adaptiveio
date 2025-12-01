@@ -7,7 +7,7 @@ import os
 # generate_setup.py
 
 package_name = "adaptiveio"
-version = "2.0.2"
+version = "2.0.3"
 author = ""
 author_email = ""
 url = ""
