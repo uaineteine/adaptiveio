@@ -48,7 +48,7 @@ def _fix_protocols(input_path:str) -> str:
         new_path = input_path.replace("http:/", "http://")
     
     if new_path != input_path:
-        print("PE0010 Warning: protocol in path has been fixed from {input_path} to {new_path}")
+        print(f"PE0010 Warning: protocol in path has been fixed from {input_path} to {new_path}")
 
     return new_path
 
