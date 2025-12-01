@@ -1,3 +1,8 @@
+"""
+Author: Daniel
+Created: November 2025
+"""
+
 def is_blob_path(input_path:str) -> bool:
     """Returns True if an abfss path"""
     if input_path.startswith("abfss:"):
