@@ -45,6 +45,7 @@
 <li><a class="reference internal" href="#">adaptiveio (root)</a><ul>
 <li><a class="reference internal" href="#module-adaptiveio.jsonio">adaptiveio.jsonio</a><ul>
 <li><a class="reference internal" href="#adaptiveio.jsonio.append_json_newline"><code class="docutils literal notranslate"><span class="pre">append_json_newline()</span></code></a></li>
+<li><a class="reference internal" href="#adaptiveio.jsonio.append_json_newline_spark"><code class="docutils literal notranslate"><span class="pre">append_json_newline_spark()</span></code></a></li>
 <li><a class="reference internal" href="#adaptiveio.jsonio.load_json"><code class="docutils literal notranslate"><span class="pre">load_json()</span></code></a></li>
 <li><a class="reference internal" href="#adaptiveio.jsonio.load_json_newline"><code class="docutils literal notranslate"><span class="pre">load_json_newline()</span></code></a></li>
 <li><a class="reference internal" href="#adaptiveio.jsonio.write_json"><code class="docutils literal notranslate"><span class="pre">write_json()</span></code></a></li>
@@ -102,13 +103,20 @@ Provides functions for loading standard JSON files and newline-delimited JSON ob
 </dd>
 </dl>
 <p>Author: Daniel
-Created: September 2025</p>
+Created: November 2025</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="adaptiveio.jsonio.append_json_newline">
 <span class="sig-prename descclassname"><span class="pre">adaptiveio.jsonio.</span></span><span class="sig-name descname"><span class="pre">append_json_newline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spark</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#adaptiveio.jsonio.append_json_newline" title="Link to this definition"></a></dt>
 <dd><p>Append a dict to a newline-delimited JSON file.
-For abfss:, reads the file, appends in memory, and overwrites.
+For blob paths, reads the file, appends in memory, and overwrites.
 For local files, uses append mode.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="adaptiveio.jsonio.append_json_newline_spark">
+<span class="sig-prename descclassname"><span class="pre">adaptiveio.jsonio.</span></span><span class="sig-name descname"><span class="pre">append_json_newline_spark</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spark</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#adaptiveio.jsonio.append_json_newline_spark" title="Link to this definition"></a></dt>
+<dd><p>Append a dict to a newline-delimited JSON file.
+With blob paths, reads the file, appends in memory, and overwrites.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -149,7 +157,7 @@ Uses Spark for distributed file operations when working with abfss: paths.</p>
 </dd>
 </dl>
 <p>Author: Daniel
-Created: September 2025</p>
+Created: November 2025</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="adaptiveio.textio.read_raw_text">
 <span class="sig-prename descclassname"><span class="pre">adaptiveio.textio.</span></span><span class="sig-name descname"><span class="pre">read_raw_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spark</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#adaptiveio.textio.read_raw_text" title="Link to this definition"></a></dt>
