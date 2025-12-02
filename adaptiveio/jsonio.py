@@ -41,10 +41,27 @@ def load_json_newline(src_path: str, spark=None) -> list:
     
     return events
 
+def append_json_newline_spark(obj: dict, dst_path: str, spark=None):
+    """
+    Append a dict to a newline-delimited JSON file.
+    With blob paths, reads the file, appends in memory, and overwrites.
+    """
+    # Try reading existing objects, fall back to empty list
+    try:
+        objs = load_json_newline(dst_path, spark=spark)
+    except:
+        objs = []
+    
+    objs.append(obj)
+    # Overwrite file
+    lines = [json.dumps(o) for o in objs]
+    file_str = "\n".join(lines)
+    save_raw_text(dst_path, file_str, spark=spark)
+
 def append_json_newline(obj: dict, dst_path: str, spark=None):
     """
     Append a dict to a newline-delimited JSON file.
-    For abfss:, reads the file, appends in memory, and overwrites.
+    For blob paths, reads the file, appends in memory, and overwrites.
     For local files, uses append mode.
     """
     if not isinstance(obj, dict):
@@ -54,17 +71,7 @@ def append_json_newline(obj: dict, dst_path: str, spark=None):
     dst_path = normalisePaths(dst_path)
     
     if is_blob_path(dst_path):
-        # Try reading existing objects, fall back to empty list
-        try:
-            objs = load_json_newline(dst_path, spark=spark)
-        except:
-            objs = []
-        
-        objs.append(obj)
-        # Overwrite file
-        lines = [json.dumps(o) for o in objs]
-        file_str = "\n".join(lines)
-        save_raw_text(dst_path, file_str, spark=spark)
+        append_json_newline_spark(obj, dst_path, spark=spark)
     else:
         # Local: append directly
         with open(dst_path, "a", encoding="utf-8") as f:
